@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Educação no Campo | Conexão Rural com Futuro</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #F4F9FC;
+            color: #1F2E2A;
+            scroll-behavior: smooth;
+        }
+
+        /* Nova paleta: serenidade do campo */
+        :root {
+            --água-profunda: #1F6E6F;    /* azul-petróleo principal */
+            --brisa-mar: #6BA6A1;        /* verde-azulado suave */
+            --menta: #C0E0D9;            /* fundo claro menta */
+            --coral-suave: #F0A28E;      /* detalhe coral claro */
+            --areia: #FEF9F0;            /* fundo creme neutro */
+            --cinza-verde: #E2EDE9;      /* bordas e áreas neutras */
+            --texto-escuro: #1A2E2A;
+            --destaque-azul: #2C7A7B;
+            --sombra-leve: 0 12px 28px rgba(0, 32, 32, 0.08);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* Header com efeito suave */
+        .header {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(31, 110, 111, 0.15);
+        }
+
+        .nav-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            font-weight: 700;
+            font-size: 1.65rem;
+            font-family: 'Merriweather', serif;
+            color: var(--água-profunda);
+        }
+
+        .logo span {
+            background: var(--coral-suave);
+            font-size: 0.8rem;
+            padding: 2px 12px;
+            border-radius: 40px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2C4E4A;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--água-profunda);
+            border-bottom: 2px solid var(--coral-suave);
+            padding-bottom: 4px;
+        }
+
+        /* menu mobile */
+        .menu-icon {
+            display: none;
+            font-size: 1.7rem;
+            cursor: pointer;
+            color: var(--água-profunda);
+        }
+
+        /* Hero com estilo fresco */
+        .hero {
+            background: linear-gradient(105deg, #EAF7F3 0%, #FFFFFF 100%);
+            padding: 4rem 0 3rem;
+        }
+
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .hero-text {
+            flex: 1.2;
+        }
+
+        .hero-badge {
+            background: var(--coral-suave);
+            display: inline-block;
+            padding: 5px 18px;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #3D2F2A;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #1A4E4A;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            color: #3E5A55;
+            max-width: 90%;
+        }
+
+        .btn-principal {
+            background: var(--água-profunda);
+            padding: 12px 34px;
+            border-radius: 48px;
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.2s;
+            box-shadow: 0 6px 12px rgba(31, 110, 111, 0.25);
+            border: none;
+        }
+
+        .btn-principal:hover {
+            background: #155a5b;
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            flex: 0.9;
+            background: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+            border-radius: 35% 65% 30% 70% / 60% 40% 60% 40%;
+            min-height: 320px;
+            box-shadow: var(--sombra-leve);
+            border: 4px solid white;
+        }
+
+        /* Seção princípios com cartões minimalistas */
+        .principios {
+            padding: 5rem 0;
+            background: var(--areia);
+        }
+
+        .section-head {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-head h2 {
+            font-size: 2.4rem;
+            font-family: 'Merriweather', serif;
+            color: var(--água-profunda);
+            display: inline-block;
+            border-bottom: 3px solid var(--coral-suave);
+            padding-bottom: 8px;
+        }
+
+        .cards-principios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .card-pilar {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem 1.5rem;
+            transition: all 0.25s ease;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            border: 1px solid var(--cinza-verde);
+        }
+
+        .card-pilar:hover {
+            transform: translateY(-6px);
+            border-color: var(--brisa-mar);
+            box-shadow: var(--sombra-leve);
+        }
+
+        .icon-circle {
+            background: #DEF0EC;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 2rem;
+            color: var(--água-profunda);
+        }
+
+        /* Alternância */
+        .alternancia {
+            background: var(--cinza-verde);
+            padding: 4rem 0;
+            border-radius: 0px;
+        }
+
+        .alternancia-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .alternancia-text {
+            flex: 1;
+        }
+
+        .badge-sec {
+            background: var(--coral-suave);
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #2E403C;
+            display: inline-block;
+        }
+
+        .alternancia-img {
+            flex: 1;
+            background: url('https://images.unsplash.com/photo-1589923188900-85dae523342b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+            min-height: 280px;
+            border-radius: 40px;
+            box-shadow: var(--sombra-leve);
+        }
+
+        /* Casos de sucesso */
+        .casos {
+            padding: 5rem 0;
+        }
+
+        .casos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .caso-card {
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            transition: 0.2s;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+            border: 1px solid var(--cinza-verde);
+        }
+
+        .caso-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .caso-content {
+            padding: 1.5rem;
+        }
+
+        .caso-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--água-profunda);
+        }
+
+        /* apoio */
+        .apoio {
+            background: linear-gradient(115deg, #E0F0EC 0%, #D2E8E2 100%);
+            color: #1A3E3A;
+            padding: 4rem 0;
+            text-align: center;
+            border-radius: 0px;
+        }
+
+        .newsletter {
+            background: white;
+            padding: 2.8rem;
+            border-radius: 64px;
+            text-align: center;
+            max-width: 850px;
+            margin: 2rem auto 0;
+            box-shadow: var(--sombra-leve);
+        }
+
+        .news-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .news-group input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border-radius: 60px;
+            border: 1px solid #C5D9D3;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--areia);
+            min-width: 220px;
+        }
+
+        .btn-secundario {
+            background: var(--coral-suave);
+            border: none;
+            padding: 0 2rem;
+            border-radius: 60px;
+            font-weight: 700;
+            color: #2A403C;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-secundario:hover {
+            background: #e08870;
+            color: white;
+        }
+
+        /* footer */
+        footer {
+            background: #1A3E3A;
+            color: #CFE4DF;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .footer-col a {
+            color: #E0F0EC;
+            text-decoration: none;
+        }
+
+        @media (max-width: 800px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                backdrop-filter: blur(18px);
+                padding: 2rem;
+                gap: 1.5rem;
+                text-align: center;
+                box-shadow: 0 20px 30px rgba(0,0,0,0.05);
+                border-radius: 0 0 32px 32px;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            .hero-text p {
+                max-width: 100%;
+            }
+            .hero-image {
+                min-height: 240px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .container {
+                padding: 0 20px;
+            }
+            .section-head h2 {
+                font-size: 1.9rem;
+            }
+            .news-group {
+                flex-direction: column;
+            }
+            .btn-secundario {
+                padding: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container nav-wrap">
+        <div class="logo">
+            <a href="#">Campo Conecta <span>educação</span></a>
+        </div>
+        <div class="menu-icon" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Início</a></li>
+            <li><a href="#principios">Fundamentos</a></li>
+            <li><a href="#alternancia">Alternância</a></li>
+            <li><a href="#casos">Experiências</a></li>
+            <li><a href="#apoio">Apoiar</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+    <section id="home" class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <div class="hero-badge"><i class="fas fa-seedling"></i> território & saberes</div>
+                <h1>Educação do Campo: raízes que transformam</h1>
+                <p>Valorizamos a identidade camponesa, a pedagogia da alternância e o desenvolvimento sustentável. Por uma escola que nasce da terra e aponta para o futuro.</p>
+                <a href="#principios" class="btn-principal"><i class="fas fa-leaf"></i> Conhecer caminhos</a>
+            </div>
+            <div class="hero-image"></div>
+        </div>
+    </section>
+
+    <section id="principios" class="principios">
+        <div class="container">
+            <div class="section-head">
+                <h2>✦ Pilares da Educação no Campo ✦</h2>
+                <p style="max-width: 650px; margin: 1rem auto 0;">Pedagogia contextualizada, gestão democrática e respeito aos ciclos da natureza.</p>
+            </div>
+            <div class="cards-principios">
+                <div class="card-pilar">
+                    <div class="icon-circle"><i class="fas fa-book-open"></i></div>
+                    <h3>Currículo contextualizado</h3>
+                    <p>Matemática do plantio, história da comunidade, ciências a partir da agroecologia e literatura regional.</p>
+                </div>
+                <div class="card-pilar">
+                    <div class="icon-circle"><i class="fas fa-calendar-week"></i></div>
+                    <h3>Calendário adaptado</h3>
+                    <p>O tempo escolar respeita colheitas, plantio e tradições — garantindo participação sem prejuízo da roça.</p>
+                </div>
+                <div class="card-pilar">
+                    <div class="icon-circle"><i class="fas fa-users-between"></i></div>
+                    <h3>Gestão compartilhada</h3>
+                    <p>Famílias agricultoras, estudantes e mestres da cultura local decidem os rumos da escola.</p>
+                </div>
+                <div class="card-pilar">
+                    <div class="icon-circle"><i class="fas fa-apple-alt"></i></div>
+                    <h3>Agroecologia e saúde</h3>
+                    <p>Hortas escolares, alimentação orgânica e integração com a soberania alimentar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="alternancia" class="alternancia">
+        <div class="container alternancia-grid">
+            <div class="alternancia-text">
+                <span class="badge-sec">metodologia viva</span>
+                <h2 style="font-family: 'Merriweather', serif; font-size: 2rem; margin: 0.8rem 0; color: var(--água-profunda);">Pedagogia da Alternância</h2>
+                <p style="font-size: 1.05rem; margin-bottom: 1rem;">O estudante alterna períodos na escola e na comunidade rural. No Tempo Escola aprofunda conteúdos científicos; no Tempo Comunidade desenvolve projetos práticos com a família, fortalecendo a autonomia camponesa.</p>
+                <ul style="list-style: none;">
+                    <li><i class="fas fa-check-circle" style="color: var(--água-profunda);"></i> + de 400 Escolas Família Agrícola (EFAs)</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--água-profunda);"></i> Formação integral e resistência no campo</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--água-profunda);"></i> Diretrizes Operacionais da Educação do Campo</li>
+                </ul>
+            </div>
+            <div class="alternancia-img"></div>
+        </div>
+    </section>
+
+    <section id="casos" class="casos">
+        <div class="container">
+            <div class="section-head">
+                <h2>🌱 Escolas que inspiram 🌱</h2>
+                <p>Experiências concretas de transformação no território brasileiro</p>
+            </div>
+            <div class="casos-grid">
+                <div class="caso-card">
+                    <div class="caso-img" style="background-image: url('https://images.unsplash.com/photo-1546820389-44d77e1f3b31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="caso-content">
+                        <h3>EFA de Saudade - CE</h3>
+                        <p>Jovens constroem viveiros agroflorestais e comercializam na feira da agricultura familiar, integrando cooperativismo e currículo.</p>
+                        <a href="#" class="saiba-mais" style="color: var(--água-profunda); font-weight: 500;">Conhecer →</a>
+                    </div>
+                </div>
+                <div class="caso-card">
+                    <div class="caso-img" style="background-image: url('https://images.unsplash.com/photo-1590682857438-a70f05a1c2de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="caso-content">
+                        <h3>Escola Itinerante - PA</h3>
+                        <p>Acampamentos do MST organizam salas com conteúdos que partem da realidade da luta pela terra, arte e política.</p>
+                        <a href="#" class="saiba-mais" style="color: var(--água-profunda); font-weight: 500;">Leia mais →</a>
+                    </div>
+                </div>
+                <div class="caso-card">
+                    <div class="caso-img" style="background-image: url('https://images.unsplash.com/photo-1532994934424-11aeb5190996?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="caso-content">
+                        <h3>CEFFA - Sul do Brasil</h3>
+                        <p>Centros Familiares de Formação por Alternância que fortalecem a sucessão rural e a produção sustentável.</p>
+                        <a href="#" class="saiba-mais" style="color: var(--água-profunda); font-weight: 500;">Ver detalhes →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apoio" class="apoio">
+        <div class="container">
+            <h2 style="font-size: 2rem; font-family: 'Merriweather', serif;">Participe da transformação</h2>
+            <p style="max-width: 650px; margin: 1rem auto; font-size: 1.05rem;">Apoie políticas públicas, compartilhe materiais didáticos contextualizados ou seja um voluntário da rede campo-educação.</p>
+            <div style="margin: 2rem 0;">
+                <a href="#" class="btn-principal" style="background: var(--coral-suave); color:#2E403C; margin: 0 8px;"><i class="fas fa-hand-sparkles"></i> Ser voluntário</a>
+                <a href="#" class="btn-principal" style="background: white; color: var(--água-profunda); border:1px solid var(--água-profunda);"><i class="fas fa-dove"></i> Parcerias</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container" style="margin-bottom: 3rem; margin-top: -1rem;">
+        <div class="newsletter">
+            <i class="fas fa-envelope-open-text" style="font-size: 2.5rem; color: var(--água-profunda);"></i>
+            <h3 style="margin: 0.5rem 0;">Boletim Raízes da Educação</h3>
+            <p>Receba novidades, editais e experiências sobre escolas do campo e pedagogia da alternância.</p>
+            <div class="news-group">
+                <input type="email" placeholder="seu melhor e-mail" id="emailNews">
+                <button class="btn-secundario" id="btnNews"><i class="fas fa-paper-plane"></i> Assinar</button>
+            </div>
+            <p style="font-size: 0.7rem; margin-top: 0.9rem;">Respeitamos sua caixa de entrada como se respeita uma semente.</p>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container footer-grid">
+        <div class="footer-col">
+            <h3 style="font-family: 'Merriweather', serif;"><i class="fas fa-water"></i> Campo Conecta</h3>
+            <p>Fórum de valorização das escolas do campo, territórios tradicionais e soberania pedagógica.</p>
+            <p><i class="fas fa-map-marker-alt"></i> Articulação nacional pela educação rural com identidade</p>
+        </div>
+        <div class="footer-col">
+            <h4>Navegue</h4>
+            <p><a href="#home">Início</a></p>
+            <p><a href="#principios">Fundamentos</a></p>
+            <p><a href="#alternancia">Alternância</a></p>
+            <p><a href="#casos">Experiências</a></p>
+        </div>
+        <div class="footer-col">
+            <h4>Referências</h4>
+            <p><i class="fas fa-gavel"></i> Diretrizes CNE/CEB nº 2/2008</p>
+            <p><i class="fas fa-university"></i> PRONACAMPO / MEC</p>
+            <p><i class="fas fa-globe"></i> Rede de Educação do Campo</p>
+        </div>
+    </div>
+    <div class="container" style="text-align: center; margin-top: 2rem; font-size: 0.8rem;">
+        <hr style="border-color: #58857E; margin: 1rem 0;">
+        &copy; 2025 Campo Conecta | “Ninguém solta a mão de ninguém na construção da escola que o campo merece”
+    </div>
+</footer>
+
+<script>
+    // menu mobile toggle
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const navLinksEl = document.getElementById('navLinks');
+    if(menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            navLinksEl.classList.toggle('show');
+        });
+    }
+
+    // smooth scroll para links internos
+    document.querySelectorAll('.nav-links a, .btn-principal[href^="#"], .btn-secundario[data-scroll]').forEach(anchor => {
+        if(anchor.getAttribute('href') && anchor.getAttribute('href').startsWith('#')) {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if(targetId !== "#" && targetId !== "") {
+                    const target = document.querySelector(targetId);
+                    if(target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        if(navLinksEl.classList.contains('show')) navLinksEl.classList.remove('show');
+                    }
+                }
+            });
+        }
+    });
+
+    // botão newsletter fake
+    const btnSubscribe = document.getElementById('btnNews');
+    if(btnSubscribe) {
+        btnSubscribe.addEventListener('click', () => {
+            const email = document.getElementById('emailNews').value;
+            if(email && email.includes('@') && email.includes('.')) {
+                alert(`🌾 Obrigado! Em breve você receberá materiais e novidades sobre a educação do campo no e-mail ${email}`);
+                document.getElementById('emailNews').value = '';
+            } else {
+                alert("🌿 Por favor, insira um e-mail válido para se conectar com a rede campo-educação.");
+            }
+        });
+    }
+
+    // efeito demonstrativo nos links dos cards
+    document.querySelectorAll('.saiba-mais, .apoio .btn-principal').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert("📘 Este é um site demonstrativo. Na prática, esses projetos possuem documentação pública e podem ser apoiados via contato institucional.");
+        });
+    });
+</script>
+</body>
+</html>
